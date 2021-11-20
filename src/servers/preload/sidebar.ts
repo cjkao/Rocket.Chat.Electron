@@ -3,7 +3,7 @@ import { WEBVIEW_SIDEBAR_STYLE_CHANGED } from '../../ui/actions';
 import { Server } from '../common';
 import { getServerUrl, getAbsoluteUrl } from './urls';
 
-let timer: ReturnType<typeof setTimeout>;
+// let timer: ReturnType<typeof setTimeout>;
 let prevBackground: string;
 let prevColor: string;
 
@@ -11,7 +11,7 @@ const pollSidebarStyle = (
   referenceElement: Element,
   emit: (input: Server['style']) => void
 ): void => {
-  clearTimeout(timer);
+  // clearTimeout(timer);
 
   document.body.append(referenceElement);
   const { background, color } = window.getComputedStyle(referenceElement);
@@ -26,7 +26,7 @@ const pollSidebarStyle = (
     prevColor = color;
   }
 
-  timer = setTimeout(() => pollSidebarStyle(referenceElement, emit), 1000);
+  // timer = setTimeout(() => pollSidebarStyle(referenceElement, emit), 1000);
 };
 
 let element: HTMLElement;

@@ -1,4 +1,4 @@
-import { WebviewTag } from 'electron';
+// import { WebviewTag } from 'electron';
 import React, { useRef, useEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -11,6 +11,11 @@ import {
 import ErrorView from './ErrorView';
 import { StyledWebView, Wrapper } from './styles';
 
+declare module 'react' {
+  interface IntrinsicElements {
+    webview: Electron.WebviewTag;
+  }
+}
 type ServerPaneProps = {
   lastPath: string | undefined;
   serverUrl: string;
@@ -26,7 +31,7 @@ export const ServerPane: FC<ServerPaneProps> = ({
 }) => {
   const dispatch = useDispatch<Dispatch<RootAction>>();
 
-  const webviewRef = useRef<WebviewTag>(null);
+  const webviewRef = useRef<Electron.WebviewTag>(null);
 
   useEffect(() => {
     const webview = webviewRef.current;
